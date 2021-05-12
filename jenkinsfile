@@ -21,7 +21,7 @@ pipeline{
           nexusUrl: '10.0.0.179:8081', 
           nexusVersion: 'nexus3', 
           protocol: 'http', 
-          repository: 'sample-app-snapshot', 
+          repository: 'simple-app-snapshot', 
           version: '1.0.0'
       }
      } 
