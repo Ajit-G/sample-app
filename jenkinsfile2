@@ -1,0 +1,20 @@
+pipeline {
+  agent any {
+  }
+  stages {
+    stage ('buid') {
+      steps{
+        sh 'mvn clean install package'
+        archiveArtifacts artifacts: '/target/*.war'
+      }
+    }
+    stage ('buidl docker image') {
+      steps{
+        sh ***
+          docker build -t ajit4/simpleapp:1.0.0 .
+          docker push ajit4/simpleapp:1.0.0
+        ***
+      }
+    }
+  }
+}
