@@ -23,6 +23,21 @@ pipeline{
         repository: 'simpleapp-SNAPSHOT', 
         version: '1.0.0-SNAPSHOT'
       }
-     } 
+     }
+     stage ('docker build iamge') {
+      steps {
+        step([
+        $class: 'DockerBuilderPublisher', 
+        cleanImages: false, 
+        cleanupWithJenkinsJobDelete: false, 
+        cloud: '', 
+        dockerFileDirectory: 'https://github.com/Ajit-G/sample-app/blob/main/dockerfile.yml', 
+        fromRegistry: [], 
+        pushCredentialsId: 'dockerhub', 
+        pushOnSuccess: true, 
+        tagsString: 'simapleapp:${BUILD_NUMBER}'
+        ])
+      }
+     }
   }
 }
