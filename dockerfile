@@ -1,4 +1,4 @@
-FROM centos:latest
+FROM openjdk 1.8
 RUN mkdir /sampleapp
 WORKDIR /sampleapp
 COPY target.*war ./
