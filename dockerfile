@@ -1,7 +1,6 @@
 FROM centos:latest
 RUN mkdir /sampleapp
+WORKDIR /sampleapp
+COPY target.*war ./
 
-
-
-
-CMD ls -l /sampleapp
+CMD java -jar simple-app-1.0.0-SNAPSHOT.war	
