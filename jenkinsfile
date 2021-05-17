@@ -24,10 +24,6 @@ pipeline{
         version: '1.0.0'
       }
      }
-     stage ('docker build iamge') {
-      steps {
-       
-      }
-     }
+     
   }
 }
