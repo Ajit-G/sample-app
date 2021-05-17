@@ -12,31 +12,21 @@ pipeline{
         nexusArtifactUploader artifacts: [
         [artifactId: 'simple-app', 
         classifier: '', 
-        file: './target/simple-app-1.0.0-SNAPSHOT.war', 
+        file: './target/simple-app-1.0.0.war', 
         type: 'war']
         ], 
         credentialsId: 'nexus3', 
         groupId: 'in.javahome', 
-        nexusUrl: '18.140.58.118:8081', 
+        nexusUrl: '3.0.100.32:8081', 
         nexusVersion: 'nexus3', 
         protocol: 'http', 
-        repository: 'simpleapp-SNAPSHOT', 
-        version: '1.0.0-SNAPSHOT'
+        repository: 'simpleapp-release', 
+        version: '1.0.0'
       }
      }
      stage ('docker build iamge') {
       steps {
-        step([
-        $class: 'DockerBuilderPublisher', 
-        cleanImages: false, 
-        cleanupWithJenkinsJobDelete: false, 
-        cloud: '', 
-        dockerFileDirectory: 'https://github.com/Ajit-G/sample-app/blob/main/dockerfile.yml', 
-        fromRegistry: [], 
-        pushCredentialsId: 'dockerhub', 
-        pushOnSuccess: true, 
-        tagsString: 'simapleapp:${BUILD_NUMBER}'
-        ])
+       
       }
      }
   }
