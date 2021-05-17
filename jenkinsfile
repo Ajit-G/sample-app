@@ -41,7 +41,7 @@ pipeline{
      	steps {
 		sshagent (credentials: ['deployserver']) {
 		    
-		    sh "ssh -o StrictHostKeyChecking=no ec2-user@3.0.100.32 docker run -d -p 9000:9000 --name=simpleapp ajit4/simpleapp:${BUILD_NUMBER} "
+		    sh "ssh -o StrictHostKeyChecking=no ec2-user@3.0.100.32 docker run -d -p 9000:9000 --name=simpleapp-${BUILD_NUMBER} ajit4/simpleapp:${BUILD_NUMBER} "
 	   }
 	}
      }
