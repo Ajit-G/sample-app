@@ -37,5 +37,13 @@ pipeline{
         sh "docker push ajit4/simpleapp:${BUILD_NUMBER}"
       }
      }
+     stage ('deployment on host) {
+     steps {
+      sshagent(credentials: ['deployserver'], ignoreMissing: true) {
+          def dockercmd = docker run -p 9000:9000 -d --name=simpleapp ajit4/simpleapp:${BUILD_NUMBER}
+          sh "ssh -o StrictHostKeyChecking=no ec2-user@3.0.100.32  ${dockercmd} "
+      }
+     }
+     }
   }
 }
