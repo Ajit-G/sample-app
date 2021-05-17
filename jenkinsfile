@@ -37,7 +37,7 @@ pipeline{
         sh "docker push ajit4/simpleapp:${BUILD_NUMBER}"
       }
      }
-     stage ('deploy on server) {
+     stage ('deploy on server') {
       steps {
       sshagent(credentials: ['deployserver'], ignoreMissing: true) {
           def dockercmd = docker run -p 9000:9000 -d --name=simpleapp ajit4/simpleapp:${BUILD_NUMBER}
