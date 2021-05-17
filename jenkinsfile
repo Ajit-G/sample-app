@@ -24,6 +24,10 @@ pipeline{
         version: '1.0.0-SNAPSHOT'
       }
      }
-     
+     stage ('build docker image') {
+      steps{
+        sh 'docker build -t ajit4/simpleapp:${BUILD_NUMBER} .'
+      }
+     }
   }
 }
