@@ -29,5 +29,13 @@ pipeline{
         sh 'docker build -t ajit4/simpleapp:${BUILD_NUMBER} .'
       }
      }
+     stage ('push image to docker hub') {
+      steps {
+        withCredentials([string(credentialsId: 'dockerhub', variable: 'docker-hub')]) {
+            docker login -u ajit4 -p "${docker-hub}"
+            sh docker push ajit4/simpleapp:${BUILD_NUMBER}
+        }
+      }
+     }
   }
 }
