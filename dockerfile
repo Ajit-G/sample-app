@@ -4,4 +4,4 @@ WORKDIR /sampleapp
 COPY ./target/*.war .
 EXPOSE 9000
 
-CMD java -jar simple-app-3.0.0-SNAPSHOT.war
+CMD java -jar simple-app-1.0.0-SNAPSHOT.war
