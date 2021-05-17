@@ -12,7 +12,7 @@ pipeline{
         nexusArtifactUploader artifacts: [
         [artifactId: 'simple-app', 
         classifier: '', 
-        file: './target/simple-app-1.0.0.war', 
+        file: './target/simple-app-1.0.0-SNAPSHOT.war', 
         type: 'war']
         ], 
         credentialsId: 'nexus3', 
@@ -20,8 +20,8 @@ pipeline{
         nexusUrl: '3.0.100.32:8081', 
         nexusVersion: 'nexus3', 
         protocol: 'http', 
-        repository: 'simpleapp-release', 
-        version: '1.0.0'
+        repository: 'simpleapp-SNAPSHOT', 
+        version: '1.0.0-SNAPSHOT'
       }
      }
      
