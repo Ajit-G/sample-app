@@ -31,10 +31,10 @@ pipeline{
      }
      stage ('push image to docker hub') {
       steps {
-        withCredentials([string(credentialsId: 'dockerhub', variable: 'docker-hub')]) {
-            sh "docker login -u ajit4 -p $docker-hub"
-        }
-        sh 'docker push ajit4/simpleapp:${BUILD_NUMBER}'
+        withCredentials([string(credentialsId: 'dockerhub', variable: 'dockerhub')]) {
+            sh "docker login -u ajit4 -p ${dockerhub}"
+       }
+        sh "docker push ajit4/simpleapp:${BUILD_NUMBER}"
       }
      }
   }
