@@ -1,21 +1,5 @@
 Pipelin {
   agent any 
-  parameters {
-    properties(
-      [parameters(
-        [string(defaultValue: '', 
-          description: '', 
-          name: 'Access_Key', 
-          trim: false), 
-        string(defaultValue: '', 
-        description: '', 
-        name: 'Secrate_key', 
-        trim: false)])
-      ])
-  }
-  Environment {
-    
-  }
     stages {
       stage ('build') {
         steps {
@@ -30,7 +14,6 @@ Pipelin {
       }
       stage ('AWS Access') {
         steps{
-          sh ' AWS configure ${Access_Key} ${Secrate_key} '
           sh ' aws ecr get-login-password --region ap-southeast-1 --profile=default | docker login --username AWS --password-stdin 111302995858.dkr.ecr.ap-southeast-1.amazonaws.com '
         }
       }
