@@ -1,20 +1,32 @@
-pipeline {
-  agent any {
+Pipeline {
+  agent any 
+  parameters {
+    properties(
+      [parameters(
+        [string(defaultValue: '', 
+          description: '', 
+          name: 'Access_Key', 
+          trim: false), 
+        string(defaultValue: '', 
+        description: '', 
+        name: 'Secrate_key', 
+        trim: false)])
+      ])
   }
-  stages {
-    stage ('buid') {
-      steps{
-        sh 'mvn clean install package'
-        archiveArtifacts artifacts: '/target/*.war'
+  Environment {
+    
+  }
+    stages {
+      stage ('build') {
+        steps {
+          sh 'mvn clean install package'
+          archiveArtifacts artifacts: '/target/*.war'
+        }
+      }
+      stage ('AWS Access') {
+        steps{
+          sh ' AWS configure ${Access_Key} ${Secrate_key} '
+        }
       }
     }
-    stage ('buidl docker image') {
-      steps{
-        sh ***
-          docker build -t ajit4/simpleapp:1.0.0 .
-          docker push ajit4/simpleapp:1.0.0
-        ***
-      }
-    }
-  }
 }
