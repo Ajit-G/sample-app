@@ -1,4 +1,4 @@
-Pipeline {
+Pipelin {
   agent any 
   parameters {
     properties(
