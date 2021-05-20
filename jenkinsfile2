@@ -31,7 +31,7 @@ Pipeline {
       stage ('AWS Access') {
         steps{
           sh ' AWS configure ${Access_Key} ${Secrate_key} '
-          sh ' aws ecr get-login-password --region ap-southeast-1 --profile=default | docker login --username AWS --password-stdin 111302995858.dkr.ecr.ap-southeast-1.amazonaws.com
+          sh ' aws ecr get-login-password --region ap-southeast-1 --profile=default | docker login --username AWS --password-stdin 111302995858.dkr.ecr.ap-southeast-1.amazonaws.com '
         }
       }
       stage ('push to ecr') {
