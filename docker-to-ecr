@@ -26,7 +26,7 @@ pipeline {
           withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'AWS', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
              sh ' aws ecr get-login-password --region ap-southeast-1 | docker login -u AWS --password-stdin 111302995858.dkr.ecr.ap-southeast-1.amazonaws.com '
           }
-          sh ' docker image rm -a
+          sh ' docker image rm -a'
           sh ' docker run -d --name=from-ecr:${BUILD_NUMBER} 111302995858.dkr.ecr.ap-southeast-1.amazonaws.com/demo:${BUILD_NUMBER} '
         }
       }
