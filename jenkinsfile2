@@ -1,6 +1,15 @@
 Pipelin {
   agent any 
-    stages {
+  properties(
+    [parameters([
+       string(defaultValue: '', description: '', name: 'AWSAccessKeyId', trim: false), 
+       string(defaultValue: '', description: '', name: 'AWSSecretKey', trim: false)])
+       ]
+     ) 
+    Environment {
+      environment name : "AccessKey: ${AWSAccessKeyId}",
+      environment name : "Secretkey: ${AWSSecretKey}"
+    }
       stage ('build') {
         steps {
           sh 'mvn clean install package'
@@ -14,6 +23,7 @@ Pipelin {
       }
       stage ('AWS Access') {
         steps{
+          sh ' aws configure -AWSAccessKeyId ${AccessKey} -AWSSecretKey ${Secretkey}
           sh ' aws ecr get-login-password --region ap-southeast-1 --profile=default | docker login --username AWS --password-stdin 111302995858.dkr.ecr.ap-southeast-1.amazonaws.com '
         }
       }
@@ -22,5 +32,11 @@ Pipelin {
           sh ' docker push 111302995858.dkr.ecr.ap-southeast-1.amazonaws.com/demo:${BUILD_NUMBER} '
         }
       }
+      stage ('pull image') { 
+        steps {
+          sh ' docker pull 111302995858.dkr.ecr.ap-southeast-1.amazonaws.com/demo:${BUILD_NUMBER} '
+        }
+      }
+      
     }
 }
