@@ -1,12 +1,12 @@
 pipeline { 
   agent any 
     stages {
-      stage ('mvn build') {
+      /* stage ('mvn build') {
         steps{
           sh 'mvn clean install package'
           archiveArtifacts artifacts: 'target/*.war'
         }
-      }
+      }*/
       stage('build docker') {
         steps {
         
