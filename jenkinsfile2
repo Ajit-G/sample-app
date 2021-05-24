@@ -1,7 +1,5 @@
-Pipelin {
+Pipeline {
   agent any 
-   // properties(
-  //  [parameters([string(defaultValue: '', description: '', name: 'AWSAccessKeyId', trim: false), string(defaultValue: '', description: '', name: 'AWSSecretKey', trim: false)])]) 
     stages { 
       stage ('build') {
         steps {
