@@ -1,11 +1,8 @@
 Pipelin {
   agent any 
-  properties(
-    [parameters([
-       string(defaultValue: '', description: '', name: 'AWSAccessKeyId', trim: false), 
-       string(defaultValue: '', description: '', name: 'AWSSecretKey', trim: false)])
-       ]
-     ) 
+    properties(
+    [parameters([string(defaultValue: '', description: '', name: 'AWSAccessKeyId', trim: false), string(defaultValue: '', description: '', name: 'AWSSecretKey', trim: false)])]) 
+    stages { 
       stage ('build') {
         steps {
           sh 'mvn clean install package'
@@ -35,4 +32,4 @@ Pipelin {
       }
       
     }
-
+}
