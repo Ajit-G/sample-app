@@ -9,7 +9,7 @@ pipeline {
           sh 'docker build -t 111302995858.dkr.ecr.ap-southeast-1.amazonaws.com/demo:${BUILD_NUMBER} .'
         }
       }
-      }
+      
       stage ('push to ecr') {
         steps {
           withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'AWS', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
