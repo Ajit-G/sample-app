@@ -21,7 +21,7 @@ pipeline {
       stage('push to docker harbor'){
         steps {
           withCredentials([usernamePassword(credentialsId: 'harbar', passwordVariable: 'pharbor', usernameVariable: 'uharbor')]) {
-                sh 'docker login 52.221.200.152 -u ${uharbor} -p ${pharbor}'
+                sh 'docker login http://52.221.200.152 -u ${uharbor} -p ${pharbor}'
            }
             sh ' docker push 52.221.200.152/demo:${BUILD_NUMBER}'
         }
