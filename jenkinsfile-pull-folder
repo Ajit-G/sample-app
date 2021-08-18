@@ -17,7 +17,7 @@ pipeline{
         [$class: 'GitSCM', 
         branches: [[name: '*/new']], 
         extensions: [], 
-        userRemoteConfigs: [[url: 'https://github.com/Ajit-G/sample-app/tree/new/testing/']]
+        userRemoteConfigs: [[url: 'https://github.com/Ajit-G/sample-app.git']]
         ])
       }
     }
