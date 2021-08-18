@@ -11,5 +11,15 @@ pipeline{
         ])
       }
     }
+    stage('git checkout'){
+      steps{
+        checkout(
+        [$class: 'GitSCM', 
+        branches: [[name: '*/new']], 
+        extensions: [], 
+        userRemoteConfigs: [[url: 'https://github.com/Ajit-G/sample-app/tree/new/testing/']]
+        ])
+      }
+    }
   }
 }
