@@ -11,7 +11,7 @@ pipeline{
         ])
       }
     }
-    stage('git checkout'){
+    stage('git checkout-new-branch'){
       steps{
         checkout(
         [$class: 'GitSCM', 
